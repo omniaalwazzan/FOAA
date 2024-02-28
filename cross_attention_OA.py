@@ -11,7 +11,7 @@ from torch.nn import init
 from torchinfo import summary 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-from cross_att_OA import *
+from Outer_addition_attention import *
 #%%
 
 class Linear_Layer(nn.Module):

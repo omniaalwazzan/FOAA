@@ -1,6 +1,6 @@
 # FOAA: Flattened Outer Arithmetic Attention For Multimodal Tumor Classification
 
-Fusion models implemented in our paper'FOAA: Flattened Outer Arithmetic Attention For Multimodal Tumor Classification' Omnia Alwazzan, Ioannis Patras, Gregory Slabaugh, ISBI 2024
+Fusion models implemented in our paper 'FOAA: Flattened Outer Arithmetic Attention For Multimodal Tumor Classification' Omnia Alwazzan, Ioannis Patras, Gregory Slabaugh, ISBI 2024
 
 
 <p align="center">

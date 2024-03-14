@@ -23,5 +23,3 @@ This repository provides all functional fusion methods that can be applied to an
   * CNN FOAA SA
   * FOAA
 
-To be updated...
-

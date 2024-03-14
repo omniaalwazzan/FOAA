@@ -16,8 +16,8 @@ This repository provides all functional fusion methods that can be applied to an
   * This file [FOAA_one_branch.py](https://github.com/omniaalwazzan/FOAA/blob/main/FOAA_one_branch.py) can be adjusted by a user to incorporate
     * Cross Attention Outer Addition (OA)
     * Cross Attention Outer Product (OP)
-    * Cross Attention Outer division (OD)
-    * Cross Attention Outer subtraction (OS)
+    * Cross Attention Outer Division (OD)
+    * Cross Attention Outer Subtraction (OS)
   * Cross OA+OP
   * Cross OA+OP+OS
   * CNN FOAA SA

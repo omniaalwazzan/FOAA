@@ -31,7 +31,7 @@ def outer_div(Q, K):
     Q_K_matmul = Q.view(Q.shape[0], Q.shape[1], -1)  / K.view(K.shape[0], K.shape[2],K.shape[1])
     return Q_K_matmul
 
-class cross_att(nn.Module):
+class FOAA_SA(nn.Module):
     # default dim of the model is 8 and head is 4
     def __init__(self, attention_type, d_model=8, num_heads=4, dropout=0.01):
         super().__init__()
@@ -86,7 +86,7 @@ class cross_att(nn.Module):
 x = torch.randn(1,1,3) # This could be interpreted as a vector that has been flattened, derived from a modality x.
 Arithmetic_operation_list = ['OA','OP','OD','OS']
 attention_type = Arithmetic_operation_list[2]# This |
-projection = cross_att(attention_type,d_model=3, num_heads=3) # heads should always match the model dim 
+projection = FOAA_SA(attention_type,d_model=3, num_heads=3) # heads should always match the model dim 
 output = projection(x)
 
 #%%
@@ -95,5 +95,5 @@ output = projection(x)
 x = torch.randn(1,3,1) 
 Arithmetic_operation_list = ['OA','OP','OD','OS']
 attention_type = Arithmetic_operation_list[0] 
-projection = cross_att(attention_type,d_model=1, num_heads=1) 
+projection = FOAA_SA(attention_type,d_model=1, num_heads=1) 
 output = projection(x)

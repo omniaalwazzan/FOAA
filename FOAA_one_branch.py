@@ -58,11 +58,11 @@ class convNext(nn.Module):
 #%%
 
 class FOAA_one_branch(nn.Module):
-    def __init__(self,atttention_op,model_image,model_gens,nb_classes=2, h_dim=1):
+    def __init__(self,atttention_op,model_image,model_EHR,nb_classes=2, h_dim=1):
         super(FOAA_one_branch, self).__init__()
         
         self.model_image =  model_image
-        self.model_gens = model_gens
+        self.model_EHR = model_EHR
         self.atttention_op = atttention_op
         self.att1 = cross_att(atttention_op,d_model=h_dim, num_heads=h_dim)
         self.att2 = cross_att(atttention_op,d_model=h_dim, num_heads=h_dim)
@@ -76,18 +76,18 @@ class FOAA_one_branch(nn.Module):
         ### 1) recieve feature maps    
         x1 = self.model_image(x1)
 
-        x2 = self.model_gens(x2)
+        x2 = self.model_EHR(x2)
         x2 = torch.squeeze(x2, 1)
         ''' we need to have our featur map to be of size (bs,feature_dim,1) to work with moab,thus we unsqueeze'''
         x1 = torch.unsqueeze(x1, 2) 
         x2 = torch.unsqueeze(x2, 2)
         
         ### 2) Cross Attention 
-        I_prim_add = self.att1(x1,x2 )#.squeeze(2) # q from genes =x2, k & v from img =x1
-        G_prim_add = self.att2(x2,x1)
+        I_prim_add = self.att1(x1,x2 )#.squeeze(2) # q from ehr =x2, k & v from img =x1
+        EHR_prim_add = self.att2(x2,x1)
     
         ### 3) Aggregate enhanced features 
-        x = torch.sum(torch.stack([I_prim_add,G_prim_add,x1,x2]), dim=0) # This operation will perform element-wise addition, maintaining the original size of the vector.
+        x = torch.sum(torch.stack([I_prim_add,EHR_prim_add,x1,x2]), dim=0) # This operation will perform element-wise addition, maintaining the original size of the vector.
         x = x.flatten(start_dim=1)
         x = self.fc1(x)
         x = self.ln(x)

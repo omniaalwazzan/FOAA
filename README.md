@@ -13,7 +13,7 @@ This paper serves as an extension to our previous methodology, MOAB. Here, we in
 This repository provides all functional fusion methods that can be applied to any domain with any CNN 
 
 * #### Available fusion models
-  * This file [FOAA_one_branch.py](https://github.com/omniaalwazzan/FOAA/blob/main/FOAA_one_branch.py) can be adjusted by a user to incorporate
+  * The file [FOAA_one_branch](https://github.com/omniaalwazzan/FOAA/blob/main/FOAA_one_branch.py) can be adjusted by a user to incorporate
     * Cross Attention Outer Addition (OA)
     * Cross Attention Outer Product (OP)
     * Cross Attention Outer Division (OD)
@@ -21,6 +21,7 @@ This repository provides all functional fusion methods that can be applied to an
   * Cross OA+OP
   * Cross OA+OP+OS
   * CNN FOAA SA
+  * FOAA
 
-To be updated..
+To be updated...
 

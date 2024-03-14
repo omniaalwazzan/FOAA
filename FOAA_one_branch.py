@@ -99,6 +99,7 @@ class FOAA_one_branch(nn.Module):
         return x    
 
 #%%
+### Sanity Check ###
 EHR_out_dim = 64
 CNN_out_dim = 64
 atttention_operation = 'OP' ### Here, the Outer Product (OP) operation can be customized by substituting 'OP' with either 'OA', 'OD', or 'OS' to achieve a single branch Outer Addition, Outer Division, or Outer Subtraction.  

@@ -131,4 +131,16 @@ img = convNext(CNN_out_dim)
 model = FOAA(atttention_OA,atttention_OP,atttention_OS,atttention_OD,img,ehr).to(device=DEVICE,dtype=torch.float)
 print(summary(model,[(1,3, 64, 64),(1,3)]))
 
+#%%
+from fvcore.nn import FlopCountAnalysis
+model.eval()
+# Simulate inputs
+x_img = torch.randn(1, 3, 64, 64).to(DEVICE)
+x_omic = torch.randn(1, 3).to(DEVICE)
 
+# Count FLOPs
+with torch.no_grad():
+    flops = FlopCountAnalysis(model, (x_img, x_omic))
+    print(f"Total FLOPs: {flops.total():,}")
+    print("FLOPs by module:")
+    print(dict(flops.by_module()))

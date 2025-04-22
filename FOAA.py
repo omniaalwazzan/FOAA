@@ -104,8 +104,8 @@ class FOAA(nn.Module):
         EHR_prim_sub = self.att6(x2,x1)
         
         ### 5) Cross Attention Outer Division
-        I_prim_div = self.att5(x1,x2) 
-        EHR_prim_div = self.att6(x2,x1)
+        I_prim_div = self.att7(x1,x2) 
+        EHR_prim_div = self.att8(x2,x1)
     
         ### 6) Aggregate FOAA enhanced features 
         x = torch.sum(torch.stack([I_prim_add,EHR_prim_add,I_prim_prod,EHR_prim_prod,I_prim_sub,EHR_prim_sub,I_prim_div,EHR_prim_div,x1,x2]), dim=0) # This operation will perform element-wise addition, maintaining the original size of the vector.
